@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo-Multiplayer</title>
+    <link rel="stylesheet" href="./loginstyles.css">
+    <link rel="stylesheet" href="./chatstyle.css">
+</head> 
+<body>
+    <div id='loginpage' class="loginpage">
+        <div class="heading">
+            <h1>Bingo</h1>
+            <h2>A MultiPlayer Game</h2>
+    
+        </div>
+        <!-- <div class="container">
+                <form id ="form" action="/signin" method="POST" onsubmit="startBingo(event)">
+                    <label for="NickName">Enter Nickname</label><br><br>
+                    <input class='Inputbox'type="text" id="NickName" placeholder="Nick Name"><br><br>
+    
+                    <label for="Entercode">Enter Code</label><br><br>
+                    <input class='Inputbox'type="text" id="Entercode" placeholder="Code">
+    
+                    <button class='ClickButtons'type="button">Create Room</button>
+                    <button class='ClickButtons' type="button" onclick="startBingo(event)">Join Game</button>
+                </form>
+        </div> -->
+
+        <div class="container">
+            <form id="loginform" action="/signin" method="GET">
+                <label for="NickName">Enter Nickname</label><br><br>
+                <input class='Inputbox' type="text" id="NickName" placeholder="Nick Name"><br><br>
+        
+                <label for="Entercode">Enter Code</label><br><br>
+                <input class='Inputbox' type="text" id="Entercode" placeholder="Code">
+        
+                <button class='ClickButtons' type="button">Create Room</button>
+                <button class='ClickButtons' type="submit">Join Game</button>
+            </form>
+            <p id="incaseError"></p> 
+            <!-- incase the nickname is empty u have to enter the nickname again -->
+
+        </div>
+        
+
+
+        <!-- <div class="circle"></div> -->
+    </div>
+
+    <div id='table' class="table">
+        <div class="welcomeheading">
+            <p id='welcomeheading'class="heading2"></p>
+
+        </div>  
+        <div class="printnickname">
+            <p id="printnickname"></p> 
+
+        </div>
+        <!-- it prints out welcome to the game "nickname" -->
+         <div class="printtable">
+            <p id="printtable"></p>
+
+         </div>
+    </div>
+
+    <div id='bingotable' class="bingotable">
+        <table>
+            <tr>
+                <td id='1'></td>
+                <td id='2'></td>
+                <td id='3' ></td>
+                <td id='4'></td>
+                <td id='5'></td>
+            </tr>
+            </table>   
+    </div>
+
+</div>
+
+
+
+<div id="chatpage">
+<ul id="messages"></ul>
+    <form id="messageform" class="messageform" action="">
+      <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+
+    <!-- <script>document.getElementById("chatpage").style.visibility="hidden"</script> -->
+    
+
+  </div>
+<script src="./socket.io.min.js" ></script>
+<script src="/socket.js" type="module"></script>
+
+
+</body>
+</html>
