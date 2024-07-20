@@ -14,6 +14,18 @@ chatpage.style.display='none'
 game_screen.style.display='none';
 bingo_table.style.display='none';
 
+window.clickFunc =function( i,j,player){
+    let element = document.getElementById(`${i}x${j}`);
+    let content = element.innerHTML;
+    content = `<span style='color:red'>${content}</s>`;
+    element.innerHTML = content;
+    strikeoff[i][j]=true
+    console.log(strikeoff)
+
+    checkBingo();
+    //updating the elements which are clicked
+}
+
 
 
 export function startBingo(event){
@@ -61,7 +73,7 @@ export function startBingo(event){
         for(let j=0;j<5;j++){
             html += `<td style="border: 1px solid black">`;
             let str=String(arr[i][j])
-            html += `<p id="${i}x${j}" onclick="clickFunc(${i},${j})">${str}</p>`;
+            html += `<p class='bingotablebuttons'id="${i}x${j}" onclick="clickFunc(${i},${j})">${str}</p>`;
             html += "</td>";
         }
         html += "</tr>";
@@ -70,23 +82,14 @@ export function startBingo(event){
     console.log(html)
     document.getElementById("printtable").innerHTML = html;
 
-    checkBingo();
-    console.log(strikeoff)
-
+    // checkBingo()
 }
 
 function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-function clickFunc(i,j,player){
-    let element = document.getElementById(`${i}x${j}`);
-    let content = element.innerHTML;
-    content = `<span style='color:red'>${content}</s>`;
-    element.innerHTML = content;
-    strikeoff[i][j]=true
-    //updating the elements which are clicked
-}
+
 function printRandomNumber(){
     let num=getRandomArbitrary()
     document.getElementById("RandomNumber").innerHTML= String(num)
@@ -97,7 +100,7 @@ function printRandomNumber(){
 //if all content is visible the game ends
 
 
-function checkBingo(){
+window.checkBingo=function(){
     let bingoString="BINGO"
     let totalcount=0;
     let rowcount=0;

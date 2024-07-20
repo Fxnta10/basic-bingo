@@ -9,6 +9,8 @@ const messages = document.getElementById('messages');
 
 const {CHAT_MESSAGE} = SOCKET_MESSAGE_TYPES;
 
+
+
 loginform.addEventListener('submit',(e)=>{
     startBingo(e)
 })
