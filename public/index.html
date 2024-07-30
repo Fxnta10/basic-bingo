@@ -33,14 +33,14 @@
                 <input class='Inputbox' type="text" id="NickName" placeholder="Nick Name"><br><br>
         
                 <label for="Entercode">Enter Code</label><br><br>
-                <input class='Inputbox' type="text" id="Entercode" placeholder="Code">
+                <input class='Inputbox' type="text" id="codeInput" placeholder="Code">
         
-                <button class='ClickButtons' type="button">Create Room</button>
-                <button class='ClickButtons' type="submit">Join Game</button>
+                <button id='createRoom' class='ClickButtons' type="button">Create Room</button>
+                <button id='joinRoom' class='ClickButtons' type="submit">Join Game</button>
             </form>
             <p id="incaseError"></p> 
             <!-- incase the nickname is empty u have to enter the nickname again -->
-
+            <p id="incaseRoomFull"></p>
         </div>
         
 
@@ -55,6 +55,10 @@
         </div>  
         <div class="printnickname">
             <p id="printnickname"></p> 
+            <br>
+            <p id="printrandomnum"></p>
+            <br>
+            <button id="nextnumber" class="ClickButtons" type="button">Next Number</button>
 
         </div>
         <!-- it prints out welcome to the game "nickname" -->
