@@ -1,50 +1,56 @@
-body{
-    font-family:"Inter",sans-serif;
-    background-color: #010104;
-    color: white;
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #010104;
+  color: white;
 }
 
-h1{
-    font-size: 60px;
-    font-weight: 600;
-    text-align: center;
+h1 {
+  font-size: 60px;
+  font-weight: 600;
+  text-align: center;
 }
-h2{
-    font-size: 40px;
-    font-weight: 400;
-    text-align: center;
+h2 {
+  font-size: 40px;
+  font-weight: 400;
+  text-align: center;
 }
-.container{
-    background-color: #3A31D8;
-    border-radius: 25px;
-    margin-top: 2rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
-    padding: 8rem;
-    font-size: 20px;
-    font-weight: 200;
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+
+  background-color: #3a31d8;
+  border-radius: 25px;
+  margin-top: 2rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  padding: 8rem;
+  font-size: 20px;
+  font-weight: 200;
 }
 
-.ClickButtons{
-    background-color: #020024;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    padding-top: 1.1rem;
-    padding-bottom: 1.1rem;
-    width:8rem;
-    font-weight: 600;
-    margin-left: 10rem;
-    margin-top: 2rem;
+.ClickButtons {
+  background-color: #020024;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+  width: 8rem;
+  font-weight: 600;
+  margin-left: 10rem;
+  margin-top: 2rem;
 }
 
-input[type=text]{
-    border: none;
-    width: 100%;
-    padding: 16px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border-radius: 8px;
+input[type="text"] {
+  border: none;
+  width: 100%;
+  padding: 16px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
 
 /* .circle{
@@ -56,39 +62,39 @@ input[type=text]{
     left: -10%;
 } */
 
-button:hover{
-    scale: 1.1;
-    
+button:hover {
+  scale: 1.1;
 }
 
 .table {
-    display: flex;
-    height: 50vh;
-    justify-content: space-around;
+  display: flex;
+  height: 50vh;
+  justify-content: space-around;
 }
-
 
 /* rows 1-2 ,column 1-2 */
-.welcomeheading{ 
-    /* grid-row: 1/2;
+.welcomeheading {
+  /* grid-row: 1/2;
     grid-column: 1/2; */
-    /* background-color: red; */
-    border-radius: 11px;
-    height: 75px;
-    padding: 25px;
-    background-color: #3A31D8;
-    display: flex;
-    float:left;
-    font-size: 25px;
+  /* background-color: red; */
+  border-radius: 11px;
+  height: 75px;
+  padding: 25px;
+  background-color: #3a31d8;
+  display: flex;
+  float: left;
+  font-size: 25px;
 }
 
-table, th, td {
-    font-family: 'Inter',sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    border: 3px solid #3A31D8;
-    text-align: center;
-    padding: 25px;
+table,
+th,
+td {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  border: 3px solid #3a31d8;
+  text-align: center;
+  padding: 25px;
 }
 
 /* 
@@ -97,7 +103,6 @@ table, th, td {
     grid-template-rows: 250px 550px ;
     grid-template-columns: 400px;
 } */
-
 
 /* rows 2-3 column 2-3 */
 /* .table{
@@ -117,3 +122,63 @@ table, th, td {
     grid-row: 2/3;
     grid-column: 1/2;
 } */
+
+.nickNameForm {
+  align-self: center;
+}
+
+#chatpage {
+  margin: 0;
+  padding-bottom: 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+.messageform {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+#input {
+  border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  border-radius: 2rem;
+  margin: 0.25rem;
+}
+#input:focus {
+  outline: none;
+}
+.messageform > button {
+  background: #3a31d8;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+  width: 5rem;
+}
+
+#messages {
+  background-color: black;
+  list-style-type: none;
+  margin: 2px;
+  border: black;
+  border: 2px;
+  padding: 0;
+  height: 300px;
+  overflow: auto;
+}
+#messages > li {
+  padding: 0.5rem 1rem;
+}
+#messages > li:nth-child(odd) {
+  background: black;
+}
