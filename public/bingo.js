@@ -1,3 +1,8 @@
+import {
+  SOCKET_MESSAGE_TYPES,
+  USERNAME_COOKIE_KEY,
+} from "./GLOBAL_CONSTANTS.js";
+
 const arr = [[], [], [], [], []];
 const strikeoff = [[], [], [], [], []];
 const gameMap = new Map();
@@ -29,29 +34,22 @@ window.clickFunc = function (i, j) {
   checkBingo();
 };
 
-export function startBingo(event) {
-  event.preventDefault();
+export function startBingo() {
+  //   event.preventDefault();
 
   login_screen.style.display = "none";
   game_screen.style.display = "";
   bingo_table.style.display = "";
   chat.style.display = "";
 
-  const inputfield = document.getElementById("NickName");
-  let nick = inputfield.value.trim();
-  if (nick === "") {
-    document.getElementById("incaseError").innerHTML = "Please enter a name";
-    return;
-  }
-  window.nick = nick;
-  console.log(nick);
+  const nick = window.Cookies.get(USERNAME_COOKIE_KEY);
 
   document.getElementById("printrandomnum").innerHTML = getRandomArbitrary(
     1,
     25
   );
 
-  const gameCode = window.hash;
+  var gameCode = location.hash.substr(1);
   console.log(`hashed gamecode is : ${gameCode}`);
   document.getElementById(
     "printnickname"
@@ -138,8 +136,8 @@ window.checkBingo = function () {
   }
 };
 
-export function CreateRoomFunction(e) {
-  e.preventDefault();
+export function CreateRoomFunction() {
+  //   e.preventDefault();
 
   let gameCode;
   do {
@@ -154,8 +152,8 @@ export function CreateRoomFunction(e) {
   startBingo(e);
 }
 
-export function joinRoomFunction(e) {
-  e.preventDefault();
+export function joinRoomFunction() {
+  //   e.preventDefault();
   enterCodeInput.style.display = "";
   inputTag.style.display = "";
   const roomCodeInputField = document.getElementById("codeInput");
@@ -179,11 +177,32 @@ export function joinRoomFunction(e) {
   gameMap.set(roomCode, userCount + 1);
   console.log("Number of users in room", gameMap.get(roomCode));
   window.location.href += `#${gameCode}`;
-  startBingo(e);
+  //   startBingo(e);
 }
 
-export function onUserLogin() {
+export function onUserLogin(nick) {
   nickNameForm.style.display = "none";
   joinRoomForm.style.display = "block";
   createRoomForm.style.display = "block";
+  document.getElementById(
+    "displaynick"
+  ).innerHTML = `Welcome to the game ${nick}`;
+  const logoutButton = document.getElementById("logout");
+  logoutButton.style.display = "inline-block";
+  logoutButton.addEventListener("click", (e) => {
+    window.Cookies.remove(USERNAME_COOKIE_KEY);
+    let currentURL = window.location.href;
+    let newURL = currentURL.split("#")[0];
+    window.location.href = newURL;
+    location.reload();
+  });
+}
+
+export function ifRoomExists() {
+  const gameCode = location.hash.substr(1);
+  if (gameCode) {
+    startBingo();
+  } else {
+    return;
+  }
 }

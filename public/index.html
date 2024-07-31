@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="./loginstyles.css" />
   </head>
   <body>
+    <header
+      style="align-items: center; display: flex; justify-content: space-between"
+    >
+      <h3 id="displaynick"></h3>
+      <button
+        id="logout"
+        style="display: none; background-color: #3a31d8"
+        class="ClickButtons"
+        type="button"
+      >
+        Logout
+      </button>
+    </header>
     <div id="loginpage" class="loginpage">
       <div class="heading">
         <h1>Bingo</h1>
@@ -112,6 +125,6 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="./socket.io.min.js"></script>
-    <script src="/socket.js" type="module"></script>
+    <script src="/app.js" type="module"></script>
   </body>
 </html>

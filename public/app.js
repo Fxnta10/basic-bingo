@@ -1,11 +1,29 @@
-import { SOCKET_MESSAGE_TYPES } from "./GLOBAL_CONSTANTS.js";
+import {
+  SOCKET_MESSAGE_TYPES,
+  USERNAME_COOKIE_KEY,
+} from "./GLOBAL_CONSTANTS.js";
 import {
   CreateRoomFunction,
   getRandomArbitrary,
   onUserLogin,
   joinRoomFunction,
   startBingo,
+  ifRoomExists,
 } from "./bingo.js";
+
+function init() {
+  const nick = window.Cookies.get(USERNAME_COOKIE_KEY);
+
+  if (nick) {
+    onUserLogin(nick);
+    ifRoomExists();
+  }
+
+  // ifRoomExists();
+}
+
+init();
+
 const socket = io();
 
 const messageform = document.getElementById("messageform");
@@ -22,12 +40,23 @@ const createRoomForm = document.getElementById("createRoomForm");
 
 nickNameForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  onUserLogin();
+
+  const inputfield = document.getElementById("NickName");
+  let nick = inputfield.value.trim();
+  if (nick === "") {
+    document.getElementById("incaseError").innerHTML = "Please enter a name";
+    return;
+  }
+
+  window.Cookies.set(USERNAME_COOKIE_KEY, nick);
+  onUserLogin(nick);
+
   return false;
 });
 
 createRoomForm.addEventListener("submit", (e) => {
-  CreateRoomFunction(e);
+  e.preventDefault();
+  CreateRoomFunction();
 });
 
 // joinRoomButton.addEventListener('click',(e)=>{
@@ -35,7 +64,9 @@ createRoomForm.addEventListener("submit", (e) => {
 // })
 
 joinRoomForm.addEventListener("submit", (e) => {
-  joinRoomFunction(e);
+  e.preventDefault();
+
+  joinRoomFunction();
 });
 
 nextNumberButton.addEventListener("click", (e) => {

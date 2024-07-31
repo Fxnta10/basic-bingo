@@ -1,16 +1,16 @@
 export const SOCKET_MESSAGE_TYPES = {
-    CHAT_MESSAGE: {
-        label: "CHAT_MESSAGE",
-        toStr: function(username, message){
-            return JSON.stringify({username, message});
-        },
-        fromStr: function(str){
-            return JSON.parse(str);
-        }
+  CHAT_MESSAGE: {
+    label: "CHAT_MESSAGE",
+    toStr: function (username, message) {
+      return JSON.stringify({ username, message });
     },
-}
+    fromStr: function (str) {
+      return JSON.parse(str);
+    },
+  },
+};
 
-
+export const USERNAME_COOKIE_KEY = "username";
 
 // var dataStr = `{"name": "username", "message": "message"}`;
 // var data = JSON.parse(dataStr);
